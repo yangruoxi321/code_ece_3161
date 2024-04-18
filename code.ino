@@ -1,7 +1,7 @@
-const int trigPin = 2;
-const int echoPin = 3;
-const int irPinLeft = 4; // 左侧红外传感器输出引脚
-const int irPinRight = 5; // 右侧红外传感器输出引脚
+const int trigPin = 2;//ultrasonic sensor's trigger
+const int echoPin = 3;//ultrasonic sensor's echo
+const int irPinLeft = 4; // Left infrared sensor output pin
+const int irPinRight = 5; // Right infrared sensor output pin
 long duration;
 float distance;
 int irLeftDetected;
@@ -11,8 +11,8 @@ void setup() {
   Serial.begin(9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  pinMode(irPinLeft, INPUT); // 设置左侧IR传感器引脚为输入
-  pinMode(irPinRight, INPUT); // 设置右侧IR传感器引脚为输入
+  pinMode(irPinLeft, INPUT);
+  pinMode(irPinRight, INPUT);
 }
 
 void loop() {
@@ -28,7 +28,7 @@ void loop() {
 
   irLeftDetected = digitalRead(irPinLeft);
   irRightDetected = digitalRead(irPinRight);
-  
+
   if(irLeftDetected == LOW && irRightDetected == HIGH) {
     Serial.println("Veering left");
   } else if(irLeftDetected == HIGH && irRightDetected == LOW) {
@@ -38,6 +38,5 @@ void loop() {
   } else {
     Serial.println("Lane departure or no detection");
   }
-
   delay(500);
 }
