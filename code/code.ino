@@ -42,7 +42,7 @@ void loop() {
   distance = duration * 0.034 / 2;
   Serial.print("Distance: ");
   Serial.println(distance);
-  
+
   if (distance < 5) {
     // Stop the car if distance is less than 5 cm
     digitalWrite(in1, LOW);
@@ -59,7 +59,7 @@ void loop() {
     if (irLeftDetected == LOW && irRightDetected == HIGH) {
       Serial.println("Veering left");
       // Turn right
-      digitalWrite(in1, HIGH);
+      
       digitalWrite(in2, LOW);
       digitalWrite(in3, LOW);
       digitalWrite(in4, HIGH);
@@ -94,6 +94,5 @@ void loop() {
       analogWrite(enB, 0);
     }
   }
-  
   delay(500);
 }
